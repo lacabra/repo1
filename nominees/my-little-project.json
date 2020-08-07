@@ -1,0 +1,15 @@
+{
+  "name": "My Little Project",
+  "description": "Amazing stuff happens in little bits",
+  "license": [
+    {
+      "spdx": "MIT",
+      "licenseURL": "MIT"
+    }
+  ],
+  "SDGs": "2: Zero Hunger, 3: Good Health and Well-Being",
+  "sectors": [],
+  "type": [
+    "software"
+  ]
+}
