@@ -1,0 +1,15 @@
+{
+  "name": "code.etalab.gouv.fr",
+  "description": "A website listing all source code repositories from the french public sector",
+  "license": [
+    {
+      "spdx": "EPL-2.0",
+      "licenseURL": "EPL-2.0"
+    }
+  ],
+  "SDGs": "9: Industry, Innovation and Infrastructure",
+  "sectors": [],
+  "type": [
+    "content"
+  ]
+}
