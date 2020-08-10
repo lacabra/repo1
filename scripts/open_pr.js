@@ -52,8 +52,8 @@ function run(){
  */
 function getHead() {
   my_options = options;
-  my_options['url'] = baseURL + 'git/refs/heads'
-  request(options, function (error, response, body) {
+  my_options['url'] = baseURL + 'git/ref/heads/master'
+  request(my_options, function (error, response, body) {
     if(error) { 
       console.error('error:', error); // Print the error if one occurred
     } else {
@@ -77,7 +77,7 @@ function createBranch(head) {
     "sha": head
   });
 
-  request.post(options, function (error, response, body) {
+  request.post(my_options, function (error, response, body) {
     if(error) {
       console.error('error:', error); // Print the error if one occurred
     } else {
