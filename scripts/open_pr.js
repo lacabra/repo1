@@ -33,7 +33,7 @@ function getChangedFiles(){
  */
 function run(){
   const files = getChangedFiles();
-  const found = false;
+  let found = false;
   for(file of files) {
     if (file.match(/nominees\/.*\.json/)) {
       found = true;
