@@ -1,0 +1,23 @@
+{
+  "name": "repo1",
+  "version": "1.0.0",
+  "description": "test repo, to be deleted",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lacabra/repo1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lacabra/repo1/issues"
+  },
+  "homepage": "https://github.com/lacabra/repo1#readme",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "request": "^2.88.2"
+  }
+}

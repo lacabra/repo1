@@ -1,6 +1,8 @@
 name: CI
 
 on: [push, pull_request]
+  paths:
+    - 'nominees/*.json'
 
 jobs:
   build:
@@ -9,6 +11,9 @@ jobs:
     steps:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
-      - name: test
+      - name: install
         run:
-          cat $HOME/files.json
+          npm install
+      - name: open PR
+        run:
+          node scripts/open_pr.js
