@@ -1,0 +1,15 @@
+{
+  "name": "Repository of open educational resources Plan Ceibal Uruguay",
+  "description": "This project has three lines of work: creation of Open Educational Resources, teaching teachers about OER, and building a community of creative teachers who share their resources.",
+  "license": [
+    {
+      "spdx": "BY-NC-SA",
+      "licenseURL": "BY-NC-SA"
+    }
+  ],
+  "SDGs": "4: Quality Education, 10: Reduced Inequalities",
+  "sectors": [],
+  "type": [
+    "content"
+  ]
+}
