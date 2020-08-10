@@ -96,8 +96,11 @@ async function commitFiles(){
   const files = getChangedFiles();
   console.log('These are the files that have changed:')
   console.log(files);
+  let commitFiles = []
   for (file of files) { 
     if (file.match(/nominees\/.*\.json/)) {
+
+      commitFiles.push(file);
 
       let my_options = options;
       my_options['url'] = baseURL + 'contents/' + file;
@@ -150,7 +153,7 @@ async function commitFiles(){
     }
   }
 
-  createPR(files);
+  createPR(commitFiles);
   
 }
 
