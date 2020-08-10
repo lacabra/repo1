@@ -97,54 +97,57 @@ async function commitFiles(){
   console.log('These are the files that have changed:')
   console.log(files);
   for (file of files) { 
-    let my_options = options;
-    my_options['url'] = baseURL + 'contents/' + file;
+    if (file.match(/nominees\/.*\.json/)) {
 
-    console.log(my_options);
+      let my_options = options;
+      my_options['url'] = baseURL + 'contents/' + file;
 
-    let promise = new Promise((resolve, reject) => {
-      request.get(my_options, function(error, response, body) {
-        if(error){
-          reject(error);
-        }else{
-          if(response.statusCode==200){
-            resolve(JSON.parse(body));
-          } else {
-            resolve(null);
+      console.log(my_options);
+
+      let promise = new Promise((resolve, reject) => {
+        request.get(my_options, function(error, response, body) {
+          if(error){
+            reject(error);
+          }else{
+            if(response.statusCode==200){
+              resolve(JSON.parse(body));
+            } else {
+              resolve(null);
+            }
           }
-        }
+        });
       });
-    });
 
-    const responseIfFileExists = await promise;
-    const fileContents = fs.readFileSync(file, 'utf8');
-    var body = {
-      'content': btoa(fileContents),
-      'branch': branchName
-    }
-    if(responseIfFileExists){
-      body['message'] = 'BLD: edit file ' + file;
-      body['sha'] = responseIfFileExists['sha'];
-    }else{
-      body['message'] = 'BLD: add file ' + file;
-    }
+      const responseIfFileExists = await promise;
+      const fileContents = fs.readFileSync(file, 'utf8');
+      var body = {
+        'content': btoa(fileContents),
+        'branch': branchName
+      }
+      if(responseIfFileExists){
+        body['message'] = 'BLD: edit file ' + file;
+        body['sha'] = responseIfFileExists['sha'];
+      }else{
+        body['message'] = 'BLD: add file ' + file;
+      }
 
-    my_options['url'] = baseURL + 'contents/'+file;
-    my_options['body'] = JSON.stringify(body);
+      my_options['url'] = baseURL + 'contents/'+file;
+      my_options['body'] = JSON.stringify(body);
 
-    console.log(my_options);
+      console.log(my_options);
 
-    promise = new Promise((resolve, reject) => {
-      request.put(my_options, function(error, response, body) {
-        if(error){
-          reject(error);
-        }else{
-          resolve(body);
-        }
+      promise = new Promise((resolve, reject) => {
+        request.put(my_options, function(error, response, body) {
+          if(error){
+            reject(error);
+          }else{
+            resolve(body);
+          }
+        });
       });
-    });
-    response = await promise;
-    console.log('Received response: ' + response)
+      response = await promise;
+      console.log('Received response: ' + response)
+    }
   }
 
   createPR(files);
