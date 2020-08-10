@@ -1,8 +1,9 @@
 name: CI
 
-on: push
-  paths:
-    - 'nominees/*.json'
+on:
+  push:
+    paths:
+      - 'nominees/*.json'
 
 jobs:
   build:
