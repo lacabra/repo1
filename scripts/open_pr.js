@@ -35,13 +35,15 @@ function run(){
   const files = getChangedFiles();
   const found = false;
   for(file of files) {
-    if file.match(/nominees\/.*\.json/){
+    if (file.match(/nominees\/.*\.json/)) {
       found = true;
       break
     }
   }
   if(found){
     getHead()
+  } else {
+    console.log('No nominee files have changed or been added. Not running script.')
   }
 }
 
