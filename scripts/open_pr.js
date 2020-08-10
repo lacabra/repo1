@@ -12,7 +12,7 @@ const branchName = 'unicef/publicgoods-candidates-'+process.env.GITHUB_SHA.subst
 options = {
   auth: {
     'user': 'lacabra',
-    'pass': proces.env.GITHUB_TOKEN
+    'pass': process.env.GITHUB_TOKEN
   },
   headers: {
     'User-Agent': 'request',
