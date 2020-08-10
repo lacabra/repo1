@@ -60,7 +60,7 @@ function getHead() {
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       console.log('body:', body); // Print the body
       response = JSON.parse(body);
-      head = response[0]['object']['sha'];
+      head = response['object']['sha'];
       createBranch(head);
     }
   });
