@@ -18,6 +18,6 @@ jobs:
           npm install
       - name: open PR
         env:
-        GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
+          GITHUBTOKEN: ${{ secrets.GITHUBTOKEN }}
         run:
           node scripts/open_pr.js
