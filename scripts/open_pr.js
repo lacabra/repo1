@@ -12,7 +12,7 @@ const branchName = 'unicef/publicgoods-candidates-'+process.env.GITHUB_SHA.subst
 options = {
   auth: {
     'user': 'lacabra',
-    'pass': process.env.GITHUB_TOKEN
+    'pass': process.env.GITHUBTOKEN
   },
   headers: {
     'User-Agent': 'request',
@@ -27,6 +27,22 @@ options = {
 function getChangedFiles(){
   var obj = JSON.parse(fs.readFileSync(path.join(process.env.HOME,'files.json'), 'utf8'));
   return obj;
+}
+
+/** Checks if any of the changed files are of our interest to run this script
+ */
+function run(){
+  const files = getChangedFiles();
+  const found = false;
+  for(file of files) {
+    if file.match(/nominees\/.*\.json/){
+      found = true;
+      break
+    }
+  }
+  if(found){
+    getHead()
+  }
 }
 
 /** Gets a pointer to the latest commit of master branch
@@ -177,4 +193,4 @@ function assignPR(numPR) {
   });
 }
 
-getHead();
+run();
