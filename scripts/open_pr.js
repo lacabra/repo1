@@ -77,6 +77,8 @@ function createBranch(head) {
     "sha": head
   });
 
+  console.log(my_options);
+
   request.post(my_options, function (error, response, body) {
     if(error) {
       console.error('error:', error); // Print the error if one occurred
@@ -96,7 +98,9 @@ async function commitFiles(){
   console.log(files);
   for (file of files) { 
     let my_options = options;
-    my_options['url'] = baseURL + 'contents/'+file;
+    my_options['url'] = baseURL + 'contents/' + file;
+
+    console.log(my_options);
 
     let promise = new Promise((resolve, reject) => {
       request.get(my_options, function(error, response, body) {
@@ -127,6 +131,8 @@ async function commitFiles(){
 
     my_options['url'] = baseURL + 'contents/'+file;
     my_options['body'] = JSON.stringify(body);
+
+    console.log(my_options);
 
     promise = new Promise((resolve, reject) => {
       request.put(my_options, function(error, response, body) {
