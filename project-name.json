@@ -1,0 +1,21 @@
+{
+	"name": "Project Name",
+	"description": "Project Description",
+	"website": "https://www.example.com",
+	"type": [
+		"data"
+	],
+	"SDGs": [
+		{
+			"SDGNumber": 1,
+			"evidenceText": "some evidence text"
+		}
+	],
+	"organizations": {
+		"org_type": "owner",
+		"name": "Orgname",
+		"website": "https://example.com",
+		"contact_name": "name",
+		"contact_email": "contact email"
+	}
+}
